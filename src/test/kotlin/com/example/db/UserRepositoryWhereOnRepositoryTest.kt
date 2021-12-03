@@ -32,7 +32,7 @@ class UserRepositoryWhereOnRepositoryTest {
     }
 
     @Test
-    fun `hibernate @Where on repository - findAll does not return deleted results`() {
+    fun `hibernate @Where on repository - builtin findAll does not return deleted results`() {
         val user = UserWhereOnRepo(UUID.randomUUID(), null, true)
         userRepositoryHibernateWhere.save(user).toMono().block()
 
@@ -41,7 +41,7 @@ class UserRepositoryWhereOnRepositoryTest {
     }
 
     @Test
-    fun `micronaut @Where on repository - findAll does not return deleted results`() {
+    fun `micronaut @Where on repository - builtin findAll does not return deleted results`() {
         val user = UserWhereOnRepo(UUID.randomUUID(), null, true)
         userRepositoryMicronautWhere.save(user).toMono().block()
 
@@ -50,7 +50,7 @@ class UserRepositoryWhereOnRepositoryTest {
     }
 
     @Test
-    fun `hibernate @Where on repository - findById does not return deleted result`() {
+    fun `hibernate @Where on repository - builtin findById does not return deleted result`() {
         val user = UserWhereOnRepo(UUID.randomUUID(), null, true)
         userRepositoryHibernateWhere.save(user).toMono().block()
 
@@ -59,11 +59,30 @@ class UserRepositoryWhereOnRepositoryTest {
     }
 
     @Test
-    fun `micronaut @Where on repository - findById does not return deleted result`() {
+    fun `micronaut @Where on repository - builtin findById does not return deleted result`() {
         val user = UserWhereOnRepo(UUID.randomUUID(), null, true)
         userRepositoryMicronautWhere.save(user).toMono().block()
 
         val result = userRepositoryMicronautWhere.findById(user.id).toMono().block()
+        assert(result == null)
+    }
+
+
+    @Test
+    fun `hibernate @Where on repository - findByEmail does not return deleted result`() {
+        val user = UserWhereOnRepo(UUID.randomUUID(), "test@test.de", true)
+        userRepositoryHibernateWhere.save(user).toMono().block()
+
+        val result = userRepositoryHibernateWhere.findByEmailEquals(user.email!!).toMono().block()
+        assert(result == null)
+    }
+
+    @Test
+    fun `micronaut @Where on repository - findByEmail does not return deleted result`() {
+        val user = UserWhereOnRepo(UUID.randomUUID(), "test@test.de", true)
+        userRepositoryMicronautWhere.save(user).toMono().block()
+
+        val result = userRepositoryMicronautWhere.findByEmailEquals(user.email!!).toMono().block()
         assert(result == null)
     }
 
