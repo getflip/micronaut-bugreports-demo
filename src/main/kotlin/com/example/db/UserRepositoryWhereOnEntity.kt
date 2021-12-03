@@ -9,10 +9,14 @@ import reactor.core.publisher.Mono
 interface UserRepositoryMicronautWhereOnEntity : ReactiveStreamsCrudRepository<UserMicronautWhere, UUID> {
     fun update(user: UserMicronautWhere): Mono<UserMicronautWhere>
     fun save(user: UserMicronautWhere): Mono<UserMicronautWhere>
+
+    override fun findById(postId: UUID): Mono<UserMicronautWhere>
 }
 
 @Repository
 interface UserRepositoryHibernateWhereOnEntity : ReactiveStreamsCrudRepository<UserHibernateWhere, UUID> {
     fun update(user: UserHibernateWhere): Mono<UserHibernateWhere>
     fun save(user: UserHibernateWhere): Mono<UserHibernateWhere>
+
+
 }

@@ -54,7 +54,7 @@ class UserRepositoryWhereOnRepositoryTest {
         val user = UserWhereOnRepo(UUID.randomUUID(), null, true)
         userRepositoryHibernateWhere.save(user).toMono().block()
 
-        val result = userRepositoryHibernateWhere.findById(user.id).block()
+        val result = userRepositoryHibernateWhere.findById(user.id).toMono().block()
         assert(result == null)
     }
 
@@ -63,7 +63,7 @@ class UserRepositoryWhereOnRepositoryTest {
         val user = UserWhereOnRepo(UUID.randomUUID(), null, true)
         userRepositoryMicronautWhere.save(user).toMono().block()
 
-        val result = userRepositoryMicronautWhere.findById(user.id).block()
+        val result = userRepositoryMicronautWhere.findById(user.id).toMono().block()
         assert(result == null)
     }
 

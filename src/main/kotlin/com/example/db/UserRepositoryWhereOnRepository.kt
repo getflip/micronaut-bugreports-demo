@@ -11,8 +11,6 @@ import reactor.core.publisher.Mono
 interface UserRepositoryMicronautWhereOnRepository : ReactiveStreamsCrudRepository<UserWhereOnRepo, UUID> {
     fun update(user: UserWhereOnRepo): Mono<UserWhereOnRepo>
     fun save(user: UserWhereOnRepo): Mono<UserWhereOnRepo>
-
-    override fun findById(postId: UUID): Mono<UserWhereOnRepo>
 }
 
 @Repository
@@ -20,6 +18,4 @@ interface UserRepositoryMicronautWhereOnRepository : ReactiveStreamsCrudReposito
 interface UserRepositoryHibernateWhereOnRepository : ReactiveStreamsCrudRepository<UserWhereOnRepo, UUID> {
     fun update(user: UserWhereOnRepo): Mono<UserWhereOnRepo>
     fun save(user: UserWhereOnRepo): Mono<UserWhereOnRepo>
-
-    override fun findById(postId: UUID): Mono<UserWhereOnRepo>
 }
