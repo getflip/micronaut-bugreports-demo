@@ -1,9 +1,16 @@
-# micronaut-bugreports-demo
-Repository to hold the demo projects for bugreports
+## Micronaut 3.2.0 Documentation
 
-## How to add a new demo for a bugreport
+- [User Guide](https://docs.micronaut.io/3.2.0/guide/index.html)
+- [API Reference](https://docs.micronaut.io/3.2.0/api/index.html)
+- [Configuration Reference](https://docs.micronaut.io/3.2.0/guide/configurationreference.html)
+- [Micronaut Guides](https://guides.micronaut.io/index.html)
+---
 
-1. Checkout a new branch with a fitting name for you problem
-2. Go to https://micronaut.io/launch/ to generate a project from scratch. Set the version, features,... as close as possible to the enviroment you want to reproduce the bug in. The CLI also can be used: https://docs.micronaut.io/latest/guide/index.html#creatingServer
-3. Use the previously generated branch to reproduce the bug. Then push the changes.
-4. Open a bug report in the corresponding [micronaut github repo](https://github.com/micronaut-projects) and link the newly created branch.
+## Feature http-client documentation
+
+- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+
+## Feature jdbc-hikari documentation
+
+- [Micronaut Hikari JDBC Connection Pool documentation](https://micronaut-projects.github.io/micronaut-sql/latest/guide/index.html#jdbc)
+
