@@ -15,11 +15,19 @@ data class User(
         val deleted: Boolean
 )
 
-
 @Entity
 @Table(name = "users")
 @Where("deleted = false")
 data class UserWithWhere(
+        @Id
+        val id: UUID,
+        val email: String?,
+        val deleted: Boolean
+)
+
+@Entity
+@Table(name = "users")
+data class UserNoWhere(
         @Id
         val id: UUID,
         val email: String?,

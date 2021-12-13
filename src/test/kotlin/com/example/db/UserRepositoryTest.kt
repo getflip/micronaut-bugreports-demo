@@ -12,15 +12,18 @@ import reactor.core.publisher.toMono
 class UserRepositoryTest {
 
     @Inject
-    lateinit var userRepository: UserRepository
+    lateinit var userRepositoryWhereOnRepository: UserRepositoryWhereOnRepository
 
 
     @Inject
     lateinit var userRepositoryWithWhereOnEntity: UserRepositoryWithWhereOnEntity
 
+    @Inject
+    lateinit var userRepositoryNoWhere: UserRepositoryNoWhere
+
     @BeforeEach
     fun setUp() {
-        userRepository.deleteAll().toMono().block()
+        userRepositoryNoWhere.deleteAll().toMono().block()
     }
 
     @Test
@@ -34,8 +37,16 @@ class UserRepositoryTest {
     @Test
     fun `where on repository - update creates user`() {
         val user = User(UUID.randomUUID(), null, false)
-        userRepository.update(user).toMono().block()
-        val result = userRepository.findById(user.id).toMono().block()
+        userRepositoryWhereOnRepository.update(user).toMono().block()
+        val result = userRepositoryWhereOnRepository.findById(user.id).toMono().block()
+        assert(result != null)
+    }
+
+    @Test
+    fun `no where - update creates user`() {
+        val user = UserNoWhere(UUID.randomUUID(), null, false)
+        userRepositoryNoWhere.update(user).toMono().block()
+        val result = userRepositoryNoWhere.findById(user.id).toMono().block()
         assert(result != null)
     }
 }
