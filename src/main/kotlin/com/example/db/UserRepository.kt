@@ -1,20 +1,31 @@
 package com.example.db
 
+import io.micronaut.data.annotation.Join
 import io.micronaut.data.annotation.Repository
 import io.micronaut.data.annotation.Where
+import io.micronaut.data.annotation.repeatable.JoinSpecifications
 import io.micronaut.data.repository.reactive.ReactiveStreamsCrudRepository
 import java.util.UUID
-import javax.persistence.Entity
-import javax.persistence.Id
-import javax.persistence.Table
 
 @Repository
 @Where("deleted = false")
-interface UserRepository : ReactiveStreamsCrudRepository<User, UUID>
+interface UserRepositoryWithWhereOnRepository : ReactiveStreamsCrudRepository<UserWithWhereOnEntity, UUID>
 
+@Repository
+interface UserRepositoryWithWhereOnEntity : ReactiveStreamsCrudRepository<UserWithWhereOnRepository, UUID>
+
+@Repository
+interface UserRepositoryWithoutWhere : ReactiveStreamsCrudRepository<UserWithoutWhere, UUID>
 
 
 @Repository
-interface UserRepositoryWithWhereOnEntity : ReactiveStreamsCrudRepository<UserWithWhere, UUID>
+@JoinSpecifications(
+    Join(value = "attachments", type = Join.Type.LEFT_FETCH),
+    Join(value = "reactions", type = Join.Type.LEFT_FETCH),
+    Join(value = "surveyChoiceSet", type = Join.Type.LEFT_FETCH),
+)
+@Where("post_deleted = false")
+interface PostRepository : ReactiveStreamsCrudRepository<PostDTO, UUID>
+
 
 
