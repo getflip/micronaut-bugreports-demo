@@ -19,11 +19,11 @@ interface UserRepositoryWithoutWhere : ReactiveStreamsCrudRepository<UserWithout
 
 
 @Repository
-@JoinSpecifications(
+/*@JoinSpecifications(
     Join(value = "attachments", type = Join.Type.LEFT_FETCH),
     Join(value = "reactions", type = Join.Type.LEFT_FETCH),
     Join(value = "surveyChoiceSet", type = Join.Type.LEFT_FETCH),
-)
+)*/
 @Where("post_deleted = false")
 interface PostRepository : ReactiveStreamsCrudRepository<PostDTO, UUID>
 

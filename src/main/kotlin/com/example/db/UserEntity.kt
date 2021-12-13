@@ -81,6 +81,7 @@ data class PostDTO(
     val publishedAt: Instant?,
     @Enumerated(EnumType.STRING)
     val language: SourceLanguageDTO?,
+    /*
     @OneToOne(cascade = [CascadeType.ALL])
     @JoinTable(
         name = "posts_survey_choice_sets",
@@ -91,6 +92,7 @@ data class PostDTO(
         ],
     )
     val surveyChoiceSet: SurveyChoiceSetDTO?,
+     */
 )
 
 
