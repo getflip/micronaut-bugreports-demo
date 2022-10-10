@@ -1,9 +1,14 @@
-# micronaut-bugreports-demo
-Repository to hold the demo projects for bugreports
+## Micronaut 3.7.1 Documentation
 
-## How to add a new demo for a bugreport
+- [User Guide](https://docs.micronaut.io/3.7.1/guide/index.html)
+- [API Reference](https://docs.micronaut.io/3.7.1/api/index.html)
+- [Configuration Reference](https://docs.micronaut.io/3.7.1/guide/configurationreference.html)
+- [Micronaut Guides](https://guides.micronaut.io/index.html)
+---
 
-1. Checkout a new branch with a fitting name for you problem
-2. Go to https://micronaut.io/launch/ to generate a project from scratch. Set the version, features,... as close as possible to the enviroment you want to reproduce the bug in. The CLI also can be used: https://docs.micronaut.io/latest/guide/index.html#creatingServer
-3. Use the previously generated branch to reproduce the bug. Then push the changes.
-4. Open a bug report in the corresponding [micronaut github repo](https://github.com/micronaut-projects) and link the newly created branch.
+- [Shadow Gradle Plugin](https://plugins.gradle.org/plugin/com.github.johnrengelman.shadow)
+## Feature http-client documentation
+
+- [Micronaut HTTP Client documentation](https://docs.micronaut.io/latest/guide/index.html#httpClient)
+
+
